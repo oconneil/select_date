@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test</title>
+    <style>
+        body {
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        #result {
+            margin-top: 20px;
+            font-size: 18px;
+        }
+    </style>
+</head>
+
+<body>
+    <h2>Select Date</h2>
+    <input type="date" id="dateInput" min="1900-01-01">
+    <div id="result"></div>
+
+    <script>
+        const dateInput = document.getElementById('dateInput');
+        const resultDiv = document.getElementById('result');
+        const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+
+        dateInput.addEventListener('change', function () {
+            const selectedDate = new Date(dateInput.value);
+            const dayOfWeek = days[selectedDate.getDay()];
+
+            const options = { month: 'short', day: 'numeric', year: 'numeric' };
+            const formattedDate = selectedDate.toLocaleDateString('en-US', options);
+
+            resultDiv.textContent = `${formattedDate} is ${dayOfWeek}`;
+        });
+    </script>
+</body>
+
+</html>
